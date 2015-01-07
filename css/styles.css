@@ -1,0 +1,15 @@
+header {
+	width: 100%;
+	height: 10vh;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: -webkit-linear-gradient(top, #b4e391 0%,#61c419 50%,#b4e391 100%);
+	text-align: center;
+	font-size: 10vh;
+}
+.action {
+	width: 100%;
+	height: 60vh;
+	border: 1px solid red;
+}
