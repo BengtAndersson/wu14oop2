@@ -11,4 +11,6 @@ $ds = new DBObjectSaver(array(
 
 $currentChallenge = $ds->current_challenge[0];
 $allPlayers = &$ds->players;
-$currentChallenge->playChallenge($allPlayers);
+$playerChallengeResult = $currentChallenge->playChallenge($allPlayers);
+echo($playerChallengeResult);
+
