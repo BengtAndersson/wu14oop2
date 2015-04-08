@@ -8,3 +8,7 @@ $ds = new DBObjectSaver(array(
   "password" => "mysql",
   "prefix" => "theBox",
 ));
+
+$currentChallenge = $ds->current_challenge[0];
+$allPlayers = &$ds->players;
+$currentChallenge->playChallenge($allPlayers);

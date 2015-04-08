@@ -6,7 +6,7 @@ class Base {
 		return $this->{"get_".$name}();
 	}
 
-	ublic function__set($name, $val){
+	public function__set($name, $val){
 		$this->{"set_".$name}($val);
 	}
 }
