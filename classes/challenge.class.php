@@ -28,23 +28,24 @@ class Challenge extends Base{
 			}
 			$playerTotalSkill = array_sum($playerSkillPercentages) / count($playerSkillPercentages);
 
-			var_dump($winners);
+			
 			if(count($winners) === 0 || $winners[0]["points"] >= $playerTotalSkill ){
-				var_dump("banan1");
+				
 				if (count($winners) < 1) {
 					$winners[] = array(
 						"points" => $playerTotalSkill,
 						"player" => &$allPlayers[$i],
 					);
 				} else {
-					$winners = array_unshift($winners, array(
+					 array_unshift($winners, array(
 						"points" => $playerTotalSkill,
 						"player" => &$allPlayers[$i],
 					));
 				}
 			}
-			elseif ($winners[0]["points"] < $playerTotalSkill || $winners[count($winners)-1]["points"] >= $playerTotalSkill ){
-				var_dump("banan2");
+			elseif ($winners[0]["points"] > $playerTotalSkill && 
+				(count($winners) === 1 || $winners[count($winners)-1]["points"] >= $playerTotalSkill) ){
+				
 				if (count($winners) < 2) {
 					$winners[] = array(
 						"points" => $playerTotalSkill,
@@ -59,7 +60,7 @@ class Challenge extends Base{
 			}
 			elseif ($winners[count($winners)-1]["points"] < $playerTotalSkill ) {
 				# code...
-				var_dump("banan3");
+				
 				$winners[] = array(
 					"points" => $playerTotalSkill,
 					"player" => &$allPlayers[$i],

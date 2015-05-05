@@ -1,12 +1,12 @@
 <?php
 
-class JaneStickyFinger extends Character
+class Squirrel extends Character
 {
 	public $success = 50;
-	public $strength = 50;
-	public $will = 60;
+	public $strength = 40;
+	public $will = 20;
 	public $health = 30;
-	public $speed = 20;
+	public $speed = 60;
 	public $tools = array();
 
 

@@ -10,3 +10,5 @@ class Base {
 		$this->{"set_".$name}($val);
 	}
 }
+
+//Blablablablablabla

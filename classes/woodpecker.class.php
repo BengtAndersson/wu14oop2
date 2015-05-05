@@ -1,6 +1,6 @@
 <?php
 
-class BillWoodpecker extends Character
+class Woodpecker extends Character
 {
 	public $success = 50;
 	public $strength = 50;

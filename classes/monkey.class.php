@@ -1,12 +1,12 @@
 <?php
 
-class TedSquirrel extends Character
+class Monkey extends Character
 {
 	public $success = 50;
-	public $strength = 40;
-	public $will = 20;
+	public $strength = 50;
+	public $will = 60;
 	public $health = 30;
-	public $speed = 60;
+	public $speed = 20;
 	public $tools = array();
 
 

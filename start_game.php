@@ -20,7 +20,7 @@ if (isset($_REQUEST["playerName"]) && isset($_REQUEST["playerClass"])) {
 	} 
 	else {
 		$playerName = "Bengt";
-		$playerClass = "BillWoodpecker";
+		$playerClass = "Woodpecker";
 
 		
 	//echo(json_encode(false));
@@ -31,7 +31,7 @@ $players = array();
 
 $players[] = new $playerClass($playerName);
 
-$playerClasses = array("BillWoodpecker", "JaneStickyFinger", "TedSquirrel");
+$playerClasses = array("Woodpecker", "Monkey", "Squirell");
 
 
 for ($i=0; $i < count($playerClasses); $i++) { 
@@ -42,7 +42,21 @@ $ds-> players =$players;
 
 $challangeData = array(
 	"Kaknästornet"=> array(
-		"description"=> "Svårjobbad yta",
+		"description"=> "Stockholm, 155m, Hinder högt upp",
+		"skills"=> array(
+			"strength"=> 40,
+			"will" => 30,
+		),
+	),
+	"Turning Torso"=> array(
+		"description"=> "Malmö, 190,4m, Svårjobbad yta",
+		"skills"=> array(
+			"strength"=> 40,
+			"will" => 30,
+		),
+	),
+	"Uppsala domkyrka"=> array(
+		"description"=> "Uppsala, 118,7m, Hal kopparbeläggning",
 		"skills"=> array(
 			"strength"=> 40,
 			"will" => 30,
@@ -53,7 +67,7 @@ $challangeData = array(
 $challanges = array();
 foreach ($challangeData as $name => $values) {
 	$challanges[] = new Challenge($name, $values["description"], $values["skills"]);
-	# code...
+	
 }
 //Tools array and loop ---------------------------------------------------------------------
 $toolsData = array(
