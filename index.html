@@ -10,9 +10,22 @@
     	<link rel="stylesheet" type="text/css" href="css/meyer-reset.css">
 	</head>
 	<body>
-		<button class="startButton">Start</button>
-		<button class="getButton">Get challenge</button>
-		<button class="doButton">Do challenge</button>
+		<section class= "startup">
+			<form class="playerinfo">
+				<label for="charname">Enter your characters name:</label>
+			    <input type="text" id="charname" placeholder="Character name"><br>
+			    <label for="chartype">Choose which type of character you want to be:</label><br>
+			    <input type="radio" name="chartype" value="monkey">Monkey<br>
+			    <input type="radio" name="chartype" value="woodpecker">Woodpecker<br>
+			    <input type="radio" name="chartype" value="squirrel">Squirrel<br>
+			    <input type="submit" value="Submit">				
+			</form>
+			<form class="controls">
+				<button class="startButton">Start</button>
+				<button class="getButton">Get challenge</button>
+				<button class="doButton">Do challenge</button>
+			</form>
+		</section>
 	</body>
 
 </html>
