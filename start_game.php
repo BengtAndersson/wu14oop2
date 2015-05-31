@@ -62,6 +62,7 @@ $challangeData = array(
 			"will" => 30,
 		),
 	),
+
 );
 
 $challanges = array();
@@ -74,10 +75,32 @@ $toolsData = array(
 	"Handbollsklister"=> array(
 		"description" => "Ger dig bättre fäste",
 		"skills"=> array(
+			"speed"=> 5,
+			"health" => 2,
+		),
+	),
+	"Spikskor"=> array(
+		"description" => "Ger dig överlägsen snabbhet på porösa material",
+		"skills"=> array(
+			"speed"=> 5,
+			"health" => 2,
+		),
+	),
+	"Handbollsklister"=> array(
+		"description" => "Ger dig bättre fäste",
+		"skills"=> array(
 			"strength"=> 5,
 			"health" => 2,
 		),
 	),
+	"Handbollsklister"=> array(
+		"description" => "Ger dig bättre fäste",
+		"skills"=> array(
+			"strength"=> 5,
+			"health" => 2,
+		),
+	),
+
 );
 $toolsArr = array();
 foreach ($toolsData as $name => $values){

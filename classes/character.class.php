@@ -2,17 +2,12 @@
 
 class Character extends Base
 {
-	public $name;
 	public $success = 50;
-	public $strength = 0;
-	public $will = 0;
-	public $stamina = 0;
-	public $speed = 0;
-	public $tools = array();
-
-
-
-
+  public $strength = 0;
+  public $will = 0;
+  public $health = 0;
+  public $speed = 0;
+  public $tools = array();
 
   public function __construct($name){
     $this->name = $name;

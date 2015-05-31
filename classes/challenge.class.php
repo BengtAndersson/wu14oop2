@@ -1,16 +1,15 @@
 <?php
 
 class Challenge extends Base{
-	public $name;
 	public $description;
 	public $skills;
 
 
-	public function __construct ($name, $description,$skills){
-		$this->name = $name;
+	public function __construct ($description,$skills){
 		$this->description = $description;
 		$this->skills = $skills;
 	}
+
 
 	public function playChallenge(&$allPlayers) {
 		$winners = array();
