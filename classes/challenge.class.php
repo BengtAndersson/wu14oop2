@@ -58,7 +58,7 @@ class Challenge extends Base{
 				}
 			}
 			elseif ($winners[count($winners)-1]["points"] < $playerTotalSkill ) {
-				# code...
+				
 				
 				$winners[] = array(
 					"points" => $playerTotalSkill,
