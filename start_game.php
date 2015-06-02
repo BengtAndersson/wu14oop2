@@ -14,6 +14,8 @@ unset($ds->challenges);
 unset($ds->tools);
 unset($ds->current_challenge);
 
+
+
 if (isset($_REQUEST["playerName"]) && isset($_REQUEST["playerClass"])) {
 	$playerName = $_REQUEST["playerName"];
 	$playerClass = $_REQUEST["playerClass"];
@@ -86,15 +88,15 @@ $toolsData = array(
 			"health" => 2,
 		),
 	),
-	"Handbollsklister"=> array(
-		"description" => "Ger dig bättre fäste",
+	"Rep"=> array(
+		"description" => "Tar dig snabbare upp till toppen",
 		"skills"=> array(
 			"strength"=> 5,
 			"health" => 2,
 		),
 	),
-	"Handbollsklister"=> array(
-		"description" => "Ger dig bättre fäste",
+	"Hacka"=> array(
+		"description" => "Ovärderligt hjälpmedel",
 		"skills"=> array(
 			"strength"=> 5,
 			"health" => 2,
@@ -117,3 +119,4 @@ $ds -> challenges = $challanges;
 //$character = new Character("Sten");	
 
 echo(json_encode(true));
+

@@ -2,7 +2,7 @@
 
 class Monkey extends Character
 {
-	public $success = 50;
+	public $name;
 	public $strength = 50;
 	public $will = 60;
 	public $health = 30;

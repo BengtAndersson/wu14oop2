@@ -2,6 +2,7 @@
 
 class Character extends Base
 {
+  public $name;
 	public $success = 50;
   public $strength = 0;
   public $will = 0;

@@ -2,7 +2,7 @@
 
 class Squirrel extends Character
 {
-	public $success = 50;
+	public $name;
 	public $strength = 40;
 	public $will = 20;
 	public $health = 30;

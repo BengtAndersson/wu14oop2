@@ -2,7 +2,7 @@
 
 class Woodpecker extends Character
 {
-	public $success = 50;
+	public $name;
 	public $strength = 50;
 	public $will = 50;
 	public $health = 50;
