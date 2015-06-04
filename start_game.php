@@ -14,6 +14,8 @@ unset($ds->have_won);
 unset($ds->have_lost);
 unset($ds->challenges);
 unset($ds->available_tools);
+unset($ds->theBox_players);
+unset($ds->theBox_available_tools);
 //unset($ds->current_challenge);
 
 /*
@@ -21,15 +23,47 @@ $player_name = "Bengt Andersson";
 $player_class = "Woodpecker";*/
 
 //push human player first to players property
-$ds->players[] = New $player_class($player_name, $ds);
+//$ds->players[] = New $player_class($player_name, $ds);
 
-//make random virtualplayer (can also be done with a while loop)
-$available_classes = array("Woodpecker", "Squirell", "Monkey");
-for ($i=0; $i < count($available_classes); $i++) { 
-  if ($available_classes[$i] != $player_class) {
-    $ds->players[] = New $available_classes[$i]("VirtualPlayer".$i, $ds);
-  }
+if (isset($_REQUEST["playerName"]) && isset($_REQUEST["playerClass"])) {
+	$playerName = $_REQUEST["playerName"];
+	$playerClass = $_REQUEST["playerClass"];
+	} 
+else {
+	$playerName = "Bengt";
+	$playerClass = "Woodpecker";
+
+	//echo(json_encode(false));
+	//exit();
 }
+
+//create virtual player
+/*$available_classes = array("Woodpecker", "Squirell", "Monkey");
+for ($i=0; $i < count($available_classes); $i++) { 
+  if ($available_classes[$i] != $playerClass) {
+    $ds->players[] = $available_classes[$i];
+  }
+}*/
+
+
+// Create a new instance of the player subclass that the user has chosen
+// and at this instance to the database
+
+$ds->players[] = new $playerClass($playerName);
+
+var_dump($ds->players);
+die();
+
+
+/*
+OM  WoodPecker != Monkey  SÅ addera till arrayen $ds-players itemen WoodPecker GÖRS
+
+OM  Squirell != Monkey  SÅ addera till arrayen $ds-players itemen Squirell GÖRS
+
+OM  Monkey != Monkey  SÅ addera till arrayen $ds-players itemen Monkey .... GÖRS INTE
+*/
+
+
 $toolsData = array(
 	"Handbollsklister"=> array(
 		"description" => "Ger dig bättre fäste",
@@ -75,14 +109,15 @@ function occurence_of($value, $array) {
   }
   return $count;
 }
-$created_tools = array();
+
+//$created_tools = array();  ? SECOND TIME
 
 while(count($ds->available_tools) < 9) {
   $random_tool = $tool_properties[rand(0, count($tool_properties)-1)];
-  //if we have created less than two of this particular tool as of yet
+ 
   if (occurence_of($random_tool, $created_tools) < 2) {
-    //create one more
-    $ds->available_tools[] = New Tool($random_tool);
+  	$description = "ett farligt vapen";
+    $ds->available_tools[] = New Tool($random_tool, $description);
   }
 }
 
