@@ -13,7 +13,19 @@ $ (function(){
 			},
 			success:function(data){
 				console.log("Detta är startGame success: ", data);
+				$(".choices").hide();
+				for (var i = 0; i < data.length; i++) {
+					for (var j = 0; j < data[i].length; j++) {
 
+
+						$(".selectChallenge").append("<h2>Welcome " + data[i][j].name + " to the game of masters!");
+						$(".selectChallenge").append("<p>Pick a challenge by accepting or hit pick new challenge if you want to change</p>");
+						$(".selectChallenge").append("<button class='accept_challenge'>Accept challenge</button>");
+						$(".selectChallenge").append("<button class='pick_new_challenge'>Pick new challenge");
+
+						console.log("YAY! stored in database", data);
+					}
+				}
 
 			},
 			error: function(data){
@@ -21,7 +33,7 @@ $ (function(){
 			}
 
 		});
-		return false;
+		//return false;
 	});
 
 
@@ -36,8 +48,7 @@ $ (function(){
 		});
 	}
 reset();
-*/
-/*
+
 	$(".getButton").click(function(){
 		$.ajax({
 			url:"get_challenge.php",
@@ -58,7 +69,10 @@ reset();
 			success:function(data){
 				console.log("Detta är doChallenge success", data);
 			}
-		});
-	});
-*/
+		});*/
+
+
+
+
+
 });

@@ -24,7 +24,6 @@ class Team extends Character {
     //adding tools to the team
     $this->tools = $humanPlayer->tools;
 
-    //call the parent class __construct   (Player) to set name of team
     parent::__construct($name);
   }
 

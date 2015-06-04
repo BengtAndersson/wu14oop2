@@ -7,5 +7,5 @@ class Monkey extends Character
 	public $will = 65;
 	public $stamina = 25;
 	public $speed = 40;
-	
+	public $tools = array();
 }

@@ -1,5 +1,5 @@
 <?php
-
+include_once("nodebite-swiss-army-oop.php");
 $ds = new DBObjectSaver(array(
   "host" => "127.0.0.1",
   "dbname" => "theBox",
@@ -9,4 +9,11 @@ $ds = new DBObjectSaver(array(
 ));
 
 
-unset($ds->theBox_available_tools);
+if (isset($_REQUEST["startOver"])) {
+  unset($ds->players);
+  unset($ds->computer_player);
+  unset($ds->tools);
+  unset($ds->challenges);
+  unset($ds->ongoing_challenge);
+}
+echo(json_encode(true));

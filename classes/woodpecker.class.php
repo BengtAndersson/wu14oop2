@@ -7,5 +7,5 @@ class Woodpecker extends Character
 	public $will = 65;
 	public $stamina = 30;
 	public $speed = 50;
-	
+	public $tools = array();
 }
