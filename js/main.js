@@ -14,7 +14,8 @@ $ (function(){
 			success:function(data){
 				console.log("Detta är startGame success: ", data);
 				$(".choices").hide();			
-				$(".selectChallenge").append("<h2>Välkommen " + data.name + " till Herre på täppan!");
+				$(".selectChallenge").append("<h2>Välkommen " + playerName + " till Herre på täppan!");
+				$(".selectChallenge").append("<p>Detta kommar från databasen " +JSON.stringify({data})+ "</p>");
 				$(".selectChallenge").append("<p>Acceptera utmaningen eller välj en ny</p>");
 				$(".selectChallenge").append("<button class='accept_challenge'>Anta utmaningen</button>");
 				$(".selectChallenge").append("<button class='pick_new_challenge'>Välj en ny utmaning");
