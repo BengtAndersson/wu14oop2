@@ -11,28 +11,76 @@ $ds = New DBObjectSaver(array(
 	));
 
 
-$chosen_companion = $_REQUEST["chosen_companion"];
-$player = $ds->players[0];
-$computer_player = $ds->computer_player;
-if (isset($chosen_companion)) {
-  $chosen_companion = $chosen_companion/1;
-  $chosen_companion = $computer_player[$chosen_companion];
-  $team = New Team ("Team", $player, $chosen_companion);
-  $opponent = $computer_player[1-$chosen_companion];
-  $members = array($team, $opponent);
-  $result = $player->carryOutChallenge($ds->ongoing_challenge[0], $members);
-} else {
-  $members = array($player, $computer_player[0], $computer_player[1]);
-  $result = $player->carryOutChallenge($ds->ongoing_challenge[0], $members);
-}  
-  $winner = $result[0];  
-  $last = $result[count($result)-1];
-  //winner gets 15 points
-  $winner->success += 15;  
-  //third lose 5 points and a random tool  
-  $last->success -= 5;  
+$companion_index = isset($_REQUEST["companionIndex"]) ? $_REQUEST["companionIndex"] : false;
 
-//data to echo back to frontend
+if (count($ds->players) < 2) {
+  echo(json_encode(false));
+  exit;
+}
+
+
+
+
+ //Play the current challenge
+
+$human_player = $ds->players[0];
+
+if ($companion_index !== false && count($ds->players) > 2) {
+
+  $companion_index = $companion_index/1;
+
+  $companion = $ds->players[$companion_index];
+
+  $opponent = count($ds->players) - $companion_index;
+
+  $human_player->success -= 5;
+
+  $companion->success -= 5;
+
+  //create a new team
+  $players = array();
+  $players[] = New Team($human_player, $companion);
+
+  $players[] = $opponent;
+
+  //and do the challenge
+  $result = $human_player->carryOutChallengeWithFriend($ds->current_challenge[0], $human_player, $companion, $opponent);
+
+  //who first etc.
+  $winner = $result[0];
+  $last = $result[count($result)-1];
+
+
+  if (get_class($winner) == "Team") {
+    $human_player->success += 9;
+    $companion->success += 9;
+    $opponent->success -= 5;
+    $opponent->loseRandomTool($ds->available_tools);
+  } else {
+
+    $winner->success += 15;
+
+    $human_player->success -= 5;
+    $human_player->loseRandomTool($ds->available_tools);
+    $companion->success -= 5;
+    $companion->loseRandomTool($ds->available_tools);
+  }
+} else {
+  //PLAY CHALLENGE
+  $result = $human_player->carryOutChallenge($ds->current_challenge[0], $ds->players);
+
+  //who is first etc.
+  $winner = $result[0];
+  $last = $result[count($result)-1];
+
+  //winner gets 15 points
+  $winner->success += 15;
+
+  //third lose 5 points and a random tool
+  $last->success -= 5;
+  $last->loseRandomTool($ds->available_tools);
+}
+
 $echo_data = array(
   "result" => $result,
   "playing" => $ds->players,

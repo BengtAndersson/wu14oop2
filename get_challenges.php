@@ -9,15 +9,27 @@ $ds = new DBObjectSaver(array(
   "prefix" => "theBox",
 ));
 
-$latestChallenge = $_REQUEST["getChallenge"];
 
-$randomChallenge = $latestChallenge;
-  while ($randomChallenge== $latestChallenge) {
-    $randomChallenge = rand(0, count($ds->challenges)-1);
+$last_challenge_index = isset($_REQUEST["lastChallenge"]) ? $_REQUEST["lastChallenge"] : false;
+
+
+
+
+if ($last_challenge_index !== false) {
+  //pick a random challenge index that's not the same as the last one
+  $random_challenge_index = $last_challenge_index;
+  while ($random_challenge_index == $last_challenge_index) {
+    $random_challenge_index = rand(0, count($ds->challenges)-1);
   }
+} else {
+  //just pick any random challenge index
+  $random_challenge_index = rand(0, count($ds->challenges)-1);
+}
 
-unset($ds->ongoing_challenge);
+//remove old challenge
+unset($ds->current_challenge);
 
-$ds->ongoing_challenge[] = $ds->challenges[$randomChallenge];
+//add the new one
+$ds->current_challenge[] = $ds->challenges[$random_challenge_index];
 
-echo(json_encode($ds->ongoing_challenge[0]));
+//and echo it out
