@@ -13,23 +13,19 @@ $ (function(){
 			},
 			success:function(data){
 				console.log("Detta är startGame success: ", data);
-				$(".choices").hide();
-				for (var i = 0; i < data.length; i++) {
-					for (var j = 0; j < data[i].length; j++) {
+				$(".choices").hide();			
+				$(".selectChallenge").append("<h2>Välkommen " + data.name + " till Herre på täppan!");
+				$(".selectChallenge").append("<p>Acceptera utmaningen eller välj en ny</p>");
+				$(".selectChallenge").append("<button class='accept_challenge'>Anta utmaningen</button>");
+				$(".selectChallenge").append("<button class='pick_new_challenge'>Välj en ny utmaning");
 
+			
+				console.log("Vi verkar ha lyckats spara något i databasen !", data);
 
-						$(".selectChallenge").append("<h2>Welcome " + data[i][j].name + " to the game of masters!");
-						$(".selectChallenge").append("<p>Pick a challenge by accepting or hit pick new challenge if you want to change</p>");
-						$(".selectChallenge").append("<button class='accept_challenge'>Accept challenge</button>");
-						$(".selectChallenge").append("<button class='pick_new_challenge'>Pick new challenge");
-
-						console.log("YAY! stored in database", data);
-					}
-				}
 
 			},
 			error: function(data){
-				console.log("error", data);
+				console.log("error: ", data);
 			}
 
 		});
@@ -38,38 +34,7 @@ $ (function(){
 
 
 
-/*	function reset (){
-		$.ajax({
-			url:"resetdb.php",
-			dataType:"json",
-			success:function(){
-				console.log("Försök att radera db");
-			}
-		});
-	}
-reset();
 
-	$(".getButton").click(function(){
-		$.ajax({
-			url:"get_challenge.php",
-			dataType:"json",
-			success:function(data){
-				console.log("Detta är getChallenge success", data);
-			}
-		});
-	});
-
-	$(".doButton").click(function(){
-		$.ajax({
-			url:"do_challenge.php",
-			data:{
-				teamUp:0
-			},
-			dataType:"json",
-			success:function(data){
-				console.log("Detta är doChallenge success", data);
-			}
-		});*/
 
 
 

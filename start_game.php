@@ -3,10 +3,10 @@ include_once("nodebite-swiss-army-oop.php");
 
 $ds = new DBObjectSaver(array(
   "host" => "127.0.0.1",
-  "dbname" => "theBox",
+  "dbname" => "wu14oop2",
   "username" => "root",
   "password" => "mysql",
-  "prefix" => "theBox",
+  "prefix" => "wu14oop2",
 ));
 
 //Empty old data
@@ -17,7 +17,7 @@ unset($ds->challenges);
 unset($ds->available_tools);
 
 
-$player_name = "BengoBoy";
+$player_name = "SuperPlayer";
 $player_class = "Squirrel";
 
 
